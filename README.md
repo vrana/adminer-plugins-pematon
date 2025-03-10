@@ -1,6 +1,12 @@
 Plugins for Adminer
 ===================
 
+## End of life 
+
+⚠️ All these plugins have been integrated into the upcomming [AdminNeo 5](https://github.com/adminneo-org/adminneo) and are no longer compatible with Adminer 5.
+
+## Info
+
 Usefull plugins for **Adminer database tool**.
 
 - [AdminerLoginServers](https://github.com/pematon/adminer-plugins#adminerloginservers)
@@ -9,13 +15,11 @@ Usefull plugins for **Adminer database tool**.
 - [AdminerCollations](https://github.com/pematon/adminer-plugins#adminercollations)
 - [How to use](https://github.com/pematon/adminer-plugins#how-to-use)
 
-## End of life 
-
-This project is almost at the end of its life. We switched to 👉 [our own Adminer fork](https://github.com/pematon/adminer) 👈 some time ago and now we are moving forward to version 5. This will include a new theme and configuration that will replace [adminer-theme](https://github.com/pematon/adminer-theme) and all plugins in [adminer-plugins](https://github.com/pematon/adminer-plugins).
-
 ## Compatibility
 
-Minimal requirements are: PHP 5.6, Adminer 4.4.
+- PHP 5.6+
+- Adminer 4.4-4.17
+- AdminNeo 4.9-4.17
 
 ## AdminerLoginServers
 
