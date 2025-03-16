@@ -56,15 +56,15 @@ class AdminerLoginServers
      * @return array
      */
     public function credentials() {
-        $params = $this->getLoginParams(DRIVER, SERVER, DB);
+        $params = $this->getLoginParams(Adminer\DRIVER, Adminer\SERVER, Adminer\DB);
 
         if ($params && $this->isSQLite($params["driver"])) {
             $password = "";
         } else {
-            $password = get_password();
+            $password = Adminer\get_password();
         }
 
-        return [SERVER, $_GET["username"], $password];
+        return [Adminer\SERVER, $_GET["username"], $password];
     }
 
     /**
@@ -78,7 +78,7 @@ class AdminerLoginServers
      */
     public function login($username, $password)
     {
-        $params = $this->getLoginParams(DRIVER, SERVER, DB);
+        $params = $this->getLoginParams(Adminer\DRIVER, Adminer\SERVER, Adminer\DB);
         if (!$params) {
             return false;
         }
@@ -255,31 +255,31 @@ class AdminerLoginServers
 
         <table cellspacing="0">
             <tr>
-                <th><?php echo lang('Server'); ?></th>
+                <th><?php echo Adminer\lang('Server'); ?></th>
                 <td>
-                    <select name="auth[serverDb]"><?php echo optionlist($this->servers, $this->getServerKey(DRIVER, SERVER, DB)); ?></select>
+                    <select name="auth[serverDb]"><?php echo Adminer\optionlist($this->servers, $this->getServerKey(Adminer\DRIVER, Adminer\SERVER, Adminer\DB)); ?></select>
                 </td>
             <tr>
-                <th><?php echo lang('Username'); ?></th>
-                <td><input id="username" name="auth[username]" value="<?php echo h($_GET["username"]); ?>"></td>
+                <th><?php echo Adminer\lang('Username'); ?></th>
+                <td><input id="username" name="auth[username]" value="<?php echo Adminer\h($_GET["username"]); ?>"></td>
             </tr>
             <tr>
-                <th><?php echo lang('Password'); ?></th>
+                <th><?php echo Adminer\lang('Password'); ?></th>
                 <td><input type="password" name="auth[password]"></td>
             </tr>
         </table>
 
-        <p><input type="submit" value="<?php echo lang('Login'); ?>">
+        <p><input type="submit" value="<?php echo Adminer\lang('Login'); ?>">
 
         <?php
-        echo checkbox("auth[permanent]", 1, $_COOKIE["adminer_permanent"], lang('Permanent login')) . "\n";
+        echo Adminer\checkbox("auth[permanent]", 1, $_COOKIE["adminer_permanent"], Adminer\lang('Permanent login')) . "\n";
         ?>
 
         <input type="hidden" name="auth[server]" value="">
         <input type="hidden" name="auth[driver]" value="">
         <input type="hidden" name="auth[db]" value="">
 
-        <script <?php echo nonce(); ?>>
+        <script <?php echo Adminer\nonce(); ?>>
             (function(document) {
                 "use strict";
 

@@ -99,7 +99,7 @@ class AdminerJsonPreview
                 display: inline-block;
                 padding: 0;
                 overflow: hidden;
-                background-image: url("<?php echo ME; ?>file=down.gif");
+                background-image: url("<?php echo Adminer\ME; ?>file=down.gif");
                 background-position: center center;
                 background-repeat: no-repeat;
                 text-indent: -50px;
@@ -119,7 +119,7 @@ class AdminerJsonPreview
             }
 
             a.json-icon.json-up {
-                background-image: url("<?php echo ME; ?>file=up.gif");
+                background-image: url("<?php echo Adminer\ME; ?>file=up.gif");
             }
 
             /* No javascript support */
@@ -132,7 +132,7 @@ class AdminerJsonPreview
             }
         </style>
 
-        <script <?php echo nonce(); ?>>
+        <script <?php echo Adminer\nonce(); ?>>
             (function(document) {
                 "use strict";
 
@@ -215,7 +215,7 @@ class AdminerJsonPreview
         $value .= ">";
 
         foreach ($json as $key => $val) {
-            $value .= "<tr><th><code>" . h($key) . "</code>";
+            $value .= "<tr><th><code>" . Adminer\h($key) . "</code>";
             $value .= "<td>";
 
             if (is_array($val) && ($this->maxLevel <= 0 || $level < $this->maxLevel)) {
@@ -224,7 +224,7 @@ class AdminerJsonPreview
                 // Shorten encoded JSON to max. length.
                 $val = $this->truncate(json_encode($val));
 
-                $value .= "<code class='jush-js'>" . h(preg_replace('/([,:])([^\s])/', '$1 $2', $val)) . "</code>";
+                $value .= "<code class='jush-js'>" . Adminer\h(preg_replace('/([,:])([^\s])/', '$1 $2', $val)) . "</code>";
             } elseif (is_string($val)) {
                 // Shorten string to max. length.
                 $val = $this->truncate($val);
@@ -234,15 +234,15 @@ class AdminerJsonPreview
                     $val .= "\n";
                 }
 
-                $value .= "<code>" . nl2br(h($val)) . "</code>";
+                $value .= "<code>" . nl2br(Adminer\h($val)) . "</code>";
             } elseif (is_bool($val)) {
                 // Handle boolean values.
-                $value .= "<code class='jush'>" . h($val ? "true" : "false") . "</code>";
+                $value .= "<code class='jush'>" . Adminer\h($val ? "true" : "false") . "</code>";
             } elseif (is_null($val)) {
                 // Handle null value.
                 $value .= "<code class='jush'>null</code>";
             } else {
-                $value .= "<code class='jush'>" . h($val) . "</code>";
+                $value .= "<code class='jush'>" . Adminer\h($val) . "</code>";
             }
         }
 
